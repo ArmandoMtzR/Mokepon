@@ -54,6 +54,8 @@ class Mokepon{
 let hipodoge = new Mokepon("Hipodoge", "./img/Cheemspng.png", 5)
 let capipepo = new Mokepon("Capipepo", "./img/Capi.png", 5)
 let ratigueya = new Mokepon("Ratigueya", "./img/ratapik.png", 5)
+let hornato = new Mokepon("Hornato", "./img/images.png", 5)
+let axolarto = new Mokepon("Axolarto", "./img/axol.png", 5)
 
 hipodoge.ataques.push(
     {nombre: "Agua", id: "botonAgua"},
@@ -80,7 +82,23 @@ ratigueya.ataques.push(
     {nombre: "Tierra", id: "botonTierra"},
 )
 
-mokepones.push(hipodoge, capipepo, ratigueya)
+hornato.ataques.push(
+    {nombre: "Tierra", id: "botonTierra"},
+    {nombre: "Tierra", id: "botonTierra"},
+    {nombre: "Tierra", id: "botonTierra"},
+    {nombre: "Agua", id: "botonAgua"},
+    {nombre: "Agua", id: "botonAgua"},
+)
+
+axolarto.ataques.push(
+    {nombre: "Agua", id: "botonAgua"},
+    {nombre: "Agua", id: "botonAgua"},
+    {nombre: "Agua", id: "botonAgua"},
+    {nombre: "Tierra", id: "botonTierra"},
+    {nombre: "Tierra", id: "botonTierra"},
+)
+
+mokepones.push(hipodoge, capipepo, ratigueya, hornato, axolarto)
 
 function iniciarJuego(){
     
@@ -99,6 +117,8 @@ function iniciarJuego(){
     inputHipodoge = document.getElementById("Hipodoge")
     inputCapipepo = document.getElementById("Capipepo")
     inputRatigueya = document.getElementById("Ratigueya")
+    inputHornato = document.getElementById("Hornato")
+    inputAxolarto = document.getElementById("Axolarto")
 
     })
 
@@ -126,6 +146,14 @@ function seleccionarMascotaJugador(){
     else if(inputRatigueya.checked){
         spanMascotaJugador.innerHTML = inputRatigueya.id
         mascotaJugador = inputRatigueya.id
+    }
+    else if(inputHornato.checked){
+        spanMascotaJugador.innerHTML = inputHornato.id
+        mascotaJugador = inputHornato.id
+    }
+    else if(inputAxolarto.checked){
+        spanMascotaJugador.innerHTML = inputAxolarto.id
+        mascotaJugador = inputAxolarto.id
     }
     else{
         alert("No seleccionaste ninguna mascota")
