@@ -21,6 +21,10 @@ const resulAtaquesEnemigo = document.getElementById("resulAtaquesEnemigo")
 const contenedorTarjetas = document.getElementById("contenedorTarjetas")
 const contenedorAtaques = document.getElementById("contenedorAtaques")
 
+const sectionVerMapa = document.getElementById("verMapa")
+const mapa = document.getElementById("mapa")
+
+
 let mokepones = [] 
 let ataqueJugador =[]
 let ataqueEnemigo = []
@@ -41,6 +45,8 @@ let victoriasJugador = 0
 let victoriasEnemigo = 0
 let contadorVidasJugador = 3
 let contadorVidasEnemigo = 3
+let lienzo = mapa.getContext("2d")
+let intervalo
 
 class Mokepon{
     constructor(nombre, foto, vida) {
@@ -48,6 +54,14 @@ class Mokepon{
         this.foto = foto
         this.vida = vida
         this.ataques = []
+        this.x = 30
+        this.y = 30
+        this.ancho = 80
+        this.alto = 80
+        this.mapaFoto = new Image()
+        this.mapaFoto.src = foto
+        this.velocidadX = 0
+        this.velocidadY = 0
     }
 }
 
@@ -103,6 +117,7 @@ mokepones.push(hipodoge, capipepo, ratigueya, hornato, axolarto)
 function iniciarJuego(){
     
     sectionSeleccionarAtaque.style.display = "none"
+    sectionVerMapa.style.display = "none"
 
     mokepones.forEach((Mokepon) => {
         opcionMokepones = `
@@ -133,7 +148,9 @@ function iniciarJuego(){
 function seleccionarMascotaJugador(){
 
     sectionSeleccionarMascota.style.display = "none"
-    sectionSeleccionarAtaque.style.display = "flex"
+    //sectionSeleccionarAtaque.style.display = "flex"
+    sectionVerMapa.style.display = "flex"
+    intervalo = setInterval(pintarPersonaje, 50)
 
     if(inputHipodoge.checked){
         spanMascotaJugador.innerHTML = inputHipodoge.id
@@ -325,6 +342,40 @@ function mensajeFinal(resultadoFinal) {
 
 function reiniciarJuego() {
     location.reload()
+}
+
+function pintarPersonaje(){
+    capipepo.x = capipepo.x + capipepo.velocidadX
+    capipepo.y = capipepo.y + capipepo.velocidadY
+    lienzo.clearRect(0,0, mapa.width, mapa.height)
+    lienzo.drawImage(
+        capipepo.mapaFoto,
+        capipepo.x,
+        capipepo.y,
+        capipepo.ancho,
+        capipepo.alto
+    )
+}
+
+function moverDerecha(){
+    capipepo.velocidadX = 5
+}
+
+function moverIzquierda(){
+    capipepo.velocidadX = -5
+}
+
+function moverAbajo(){
+    capipepo.velocidadY = 5
+}
+
+function moverArriba(){
+    capipepo.velocidadY = -5
+}
+
+function detenerMovimiento(){
+    capipepo.velocidadX = 0
+    capipepo.velocidadY = 0
 }
 
 window.addEventListener("load", iniciarJuego) 
