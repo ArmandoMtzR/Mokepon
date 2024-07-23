@@ -144,10 +144,6 @@ input:checked + label{
     justify-content: center;
 }
 
-#mapa{
-    border: 2px solid white;
-}
-
 @media screen and (max-width: 1350px){
     .tarjetas, .botonesAtaque{
         flex-direction: column;
