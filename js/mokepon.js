@@ -215,6 +215,20 @@ function iniciarJuego(){
 
     botonReiniciar.addEventListener("click", reiniciarJuego)
 
+    unirseJuego()
+
+
+function unirseJuego(){
+    fetch("http://localhost:8080/unirse")
+        .then(function(res){
+            if(res.ok){
+                res.text()
+                .then(function(respuesta) {
+                    console.log(respuesta)
+                })
+            }
+        })
+}
 }
 
 function seleccionarMascotaJugador(){
