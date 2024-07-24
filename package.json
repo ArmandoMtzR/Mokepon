@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/ArmandoMtzR/Mokepon/issues"
   },
-  "homepage": "https://github.com/ArmandoMtzR/Mokepon#readme"
+  "homepage": "https://github.com/ArmandoMtzR/Mokepon#readme",
+  "dependencies": {
+    "express": "^4.19.2"
+  }
 }
